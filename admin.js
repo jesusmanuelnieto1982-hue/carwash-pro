@@ -1,11 +1,11 @@
 // ===============================
-// CONFIGURACIÓN SUPABASE
+// PROTEGER ADMIN
 // ===============================
-const SUPABASE_URL = "https://aoldtijqziyiynwqgdol.supabase.co";
-const SUPABASE_KEY = "sb_publishable_jSvN9UF744NRKfP_8h-f_A_s9DRmEWV";
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+protectAdmin();
 
+// ===============================
 // ID del negocio actual
+// ===============================
 const BUSINESS_ID = "f9c61a1f-3625-4847-9da6-f59693bb4d51";
 
 // ===============================
