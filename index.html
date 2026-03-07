@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carwash Pro</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 id="app-title">Carwash Pro</h1>
+
+      <div class="lang-switch">
+        <button id="btn-es">ES</button>
+        <button id="btn-en">EN</button>
+      </div>
+
+      <h2 id="form-title">Reserva tu servicio</h2>
+
+      <form id="bookingForm">
+        <label id="label-name" for="customer_name">Nombre</label>
+        <input
+          type="text"
+          id="customer_name"
+          placeholder="Tu nombre"
+          required
+        />
+
+        <label id="label-phone" for="customer_phone">Teléfono</label>
+        <input
+          type="tel"
+          id="customer_phone"
+          placeholder="Tu número"
+          required
+        />
+
+        <label id="label-service" for="service">Servicio</label>
+        <select id="service" required>
+          <option value="" disabled selected>Selecciona un servicio</option>
+        </select>
+
+        <label id="label-date" for="date">Fecha</label>
+        <input type="date" id="date" required />
+
+        <label id="label-time" for="time">Hora</label>
+        <input type="time" id="time" required />
+
+        <button id="btn-submit" type="submit">Reservar</button>
+      </form>
+
+      <p id="status"></p>
+    </div>
+
+    <!-- Librería Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Lógica completa de la app -->
+    <script src="script.js"></script>
+  </body>
+</html>

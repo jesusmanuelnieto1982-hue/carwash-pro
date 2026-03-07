@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Panel Admin – Carwash Pro</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script src="auth.js"></script>
+    <script>
+      protectAdmin();
+    </script>
+
+    <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+
+    <script src="auth.js"></script>
+    <script>
+      protectAdmin();
+    </script>
+
+    <h1>Panel Admin – Carwash Pro</h1>
+
+    <div id="status"></div>
+
+    <table id="bookingsTable">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Teléfono</th>
+          <th>Servicio</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

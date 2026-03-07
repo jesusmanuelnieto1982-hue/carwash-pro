@@ -1,0 +1,209 @@
+/* ================================
+   PANEL ADMIN PRO – ESTILOS
+================================ */
+
+/* Fondo general */
+body {
+  background: #0d0d0d;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  color: #ff4444;
+  margin-bottom: 25px;
+  font-size: 32px;
+}
+
+/* Tabla */
+table {
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.2);
+}
+
+thead {
+  background: #222;
+}
+
+thead th {
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+  color: #ff4444;
+  border-bottom: 2px solid #333;
+}
+
+tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #333;
+  font-size: 14px;
+}
+
+/* Hover fila */
+tbody tr:hover {
+  background: #262626;
+}
+
+/* Botones */
+button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Botón confirmar */
+button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+button:nth-child(1):hover {
+  background: #005fcc;
+}
+
+/* Botón completar */
+button:nth-child(2) {
+  background: #28a745;
+  color: white;
+}
+
+button:nth-child(2):hover {
+  background: #1e7e34;
+}
+
+/* Badges de estado */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+.status-pending {
+  background: #ffbb33;
+  color: #000;
+}
+
+.status-confirmed {
+  background: #33b5e5;
+  color: #000;
+}
+
+.status-completed {
+  background: #00c851;
+  color: #000;
+}
+/* ... tus estilos anteriores ... */
+
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.login-body {
+  background: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background: #1a1a1a;
+  padding: 40px;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.login-container h1 {
+  color: #ff4444;
+  margin-bottom: 10px;
+}
+
+.login-container input {
+  width: 100%;
+  height: 44px; /* altura fija para que ambos sean iguales */
+  padding: 0 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background: #ff4444;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background: #ff2222;
+}
+
+.error {
+  color: #ff4444;
+  margin-top: 10px;
+}
+.logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ff4444;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: #ff2222;
+}
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 12px;
+  padding-right: 36px; /* espacio exacto para el ojito */
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 14px; /* más pequeño */
+  color: #aaa;
+  user-select: none;
+  line-height: 1; /* evita que se vea más grande */
+  height: 14px; /* fuerza tamaño */
+  display: flex;
+  align-items: center;
+}
