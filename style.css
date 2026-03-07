@@ -303,10 +303,12 @@ input::placeholder {
 }
 /* Forzar que todos los campos tengan el mismo tamaño */
 input,
+/* Forzar que todos los campos tengan el mismo tamaño */
+input,
+/* Forzar que todos los campos tengan el mismo tamaño */
+input,
 select {
   appearance: none;
-}
-
   width: 100%;
   height: 48px; /* mismo alto para todos */
   padding: 12px;
