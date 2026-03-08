@@ -62,20 +62,17 @@ function fillTable(bookings) {
 // CAMBIAR ESTADO
 // ===============================
 async function changeStatus(id, newStatus) {
-  const { error } = await supabaseClient
+  const { data, error } = await supabaseClient
     .from("bookings")
     .update({ status: newStatus })
-    .eq("id", id);
+    .eq("id", id)
+    .select(); // ← NECESARIO EN SUPABASE V2
 
   if (error) {
+    console.error("Error cambiando estado:", error);
     alert("Error cambiando estado");
     return;
   }
 
   loadBookings();
 }
-
-// ===============================
-// INICIALIZACIÓN
-// ===============================
-loadBookings();
