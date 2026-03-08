@@ -1,78 +1,48 @@
-// ===============================
-// PROTEGER ADMIN
-// ===============================
-protectAdmin();
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Panel Admin – Carwash Pro</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-// ===============================
-// ID del negocio actual
-// ===============================
-const BUSINESS_ID = "f9c61a1f-3625-4847-9da6-f59693bb4d51";
+  <body>
 
-// ===============================
-// CARGAR RESERVAS (FILTRADO POR NEGOCIO)
-// ===============================
-async function loadBookings() {
-  const { data, error } = await supabaseClient
-    .from("bookings")
-    .select("*, services(name_es, name_en)")
-    .eq("business_id", BUSINESS_ID)
-    .order("date", { ascending: true });
+    <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
 
-  if (error) {
-    console.error("Error cargando reservas:", error);
-    document.getElementById("status").textContent = "Error cargando reservas";
-    return;
-  }
+    <h1>Panel Admin – Carwash Pro</h1>
 
-  fillTable(data);
-}
+    <div id="status"></div>
 
-// ===============================
-// LLENAR TABLA
-// ===============================
-function fillTable(bookings) {
-  const tbody = document.querySelector("#bookingsTable tbody");
-  tbody.innerHTML = "";
+    <table id="bookingsTable">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Teléfono</th>
+          <th>Servicio</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
 
-  bookings.forEach((b) => {
-    const tr = document.createElement("tr");
+    <!-- ORDEN CORRECTO DE SCRIPTS -->
+    <!-- 1. Librería Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    tr.innerHTML = `
-      <td>${b.customer_name}</td>
-      <td>${b.customer_phone}</td>
-      <td>${b.services?.name_es || "Servicio"}</td>
-      <td>${b.date}</td>
-      <td>${b.time}</td>
-      <td>
-        <span class="status-badge status-${b.status || "pending"}">
-          ${b.status || "pending"}
-        </span>
-      </td>
-      <td>
-        <button onclick="changeStatus('${b.id}', 'confirmed')">Confirmar</button>
-        <button onclick="changeStatus('${b.id}', 'completed')">Completar</button>
-      </td>
-    `;
+    <!-- 2. auth.js (crea supabaseClient y protectAdmin) -->
+    <script src="auth.js"></script>
 
-    tbody.appendChild(tr);
-  });
-}
+    <!-- 3. admin.js (usa supabaseClient) -->
+    <script src="admin.js"></script>
 
-// ===============================
-// CAMBIAR ESTADO
-// ===============================
-async function changeStatus(id, newStatus) {
-  const { data, error } = await supabaseClient
-    .from("bookings")
-    .update({ status: newStatus })
-    .eq("id", id)
-    .select(); // ← NECESARIO EN SUPABASE V2
+    <!-- 4. Ejecutar protección -->
+    <script>
+      protectAdmin();
+    </script>
 
-  if (error) {
-    console.error("Error cambiando estado:", error);
-    alert("Error cambiando estado");
-    return;
-  }
-
-  loadBookings();
-}
+  </body>
+</html>
