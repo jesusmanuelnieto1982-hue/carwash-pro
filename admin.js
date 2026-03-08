@@ -24,10 +24,14 @@ async function loadBookings() {
       <td>${booking.service_id}</td>
       <td>${booking.date}</td>
       <td>${booking.time}</td>
-      <td>${booking.status}</td>
       <td>
-        <button onclick="updateStatus('${booking.id}', 'confirmed')">Confirmar</button>
-        <button onclick="updateStatus('${booking.id}', 'completed')">Completar</button>
+        <span class="status-badge status-${booking.status}">
+          ${booking.status}
+        </span>
+      </td>
+      <td>
+        <button onclick="updateStatus('${booking.id}', 'confirmed')" style="background:#3498db">Confirmar</button>
+        <button onclick="updateStatus('${booking.id}', 'completed')" style="background:#2ecc71">Completar</button>
       </td>
     `;
 
