@@ -5,18 +5,9 @@
     <title>Panel Admin – Carwash Pro</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <script src="auth.js"></script>
-    <script>
-      protectAdmin();
-    </script>
-
     <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
-
-    <script src="auth.js"></script>
-    <script>
-      protectAdmin();
-    </script>
 
     <h1>Panel Admin – Carwash Pro</h1>
 
@@ -37,7 +28,19 @@
       <tbody></tbody>
     </table>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <!-- ORDEN CORRECTO DE SCRIPTS -->
+    <!-- 1. Librería Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- 2. auth.js (crea supabaseClient y protectAdmin) -->
+    <script src="auth.js"></script>
+
+    <!-- 3. admin.js (usa supabaseClient) -->
     <script src="admin.js"></script>
+
+    <!-- 4. Ejecutar protección -->
+    <script>
+      protectAdmin();
+    </script>
   </body>
 </html>
