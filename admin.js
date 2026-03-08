@@ -19,15 +19,15 @@ async function loadBookings() {
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
-      <td>${booking.name}</td>
-      <td>${booking.phone}</td>
-      <td>${booking.service}</td>
+      <td>${booking.customer_name}</td>
+      <td>${booking.customer_phone}</td>
+      <td>${booking.service_id}</td>
       <td>${booking.date}</td>
       <td>${booking.time}</td>
       <td>${booking.status}</td>
       <td>
-        <button onclick="updateStatus('${booking.id}', 'confirmado')">Confirmar</button>
-        <button onclick="updateStatus('${booking.id}', 'completado')">Completar</button>
+        <button onclick="updateStatus('${booking.id}', 'confirmed')">Confirmar</button>
+        <button onclick="updateStatus('${booking.id}', 'completed')">Completar</button>
       </td>
     `;
 
