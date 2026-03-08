@@ -1,6 +1,6 @@
 const supabaseClient = supabase.createClient(
-  "https://TU-PROJECT.supabase.co",
-  "sb_publishable_jSvN9UF744NRKfP_8h-f_A_s9DRmEWV",
+  "https://aoldtijqziyiynwqgdol.supabase.co", // ejemplo: https://aoldtijqziyiynwqgdol.supabase.co
+  "sb_publishable_jSvN9UF744NRKfP_8h-f_A_s9DRmEWV", // tu anon public completa
 );
 
 // ===============================
