@@ -403,3 +403,83 @@ button:hover {
   float: right;
   margin-bottom: 20px;
 }
+/* ======== LAYOUT ======== */
+body {
+  display: flex;
+  margin: 0;
+}
+
+/* ======== SIDEBAR ======== */
+.sidebar {
+  width: 240px;
+  background: #0f0f0f;
+  height: 100vh;
+  padding: 30px 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-right: 1px solid #1f1f1f;
+}
+
+.sidebar h2 {
+  color: #00a8ff;
+  font-size: 22px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #ccc;
+  transition: 0.2s;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+  background: #1a1a1a;
+  color: #00a8ff;
+}
+
+/* ======== MAIN CONTENT ======== */
+.main-content {
+  margin-left: 260px;
+  padding: 40px;
+  width: calc(100% - 260px);
+}
+
+/* ======== STATS CARDS ======== */
+.stats-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  flex: 1;
+  background: #141414;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #aaa;
+}
+
+.stat-card p {
+  margin: 10px 0 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #00a8ff;
+}

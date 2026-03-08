@@ -7,40 +7,67 @@
   </head>
 
   <body>
-    <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+    <div class="sidebar">
+      <h2>Carwash Pro</h2>
+      <ul>
+        <li class="active">Reservas</li>
+        <li>Clientes</li>
+        <li>Servicios</li>
+        <li>Reportes</li>
+      </ul>
+    </div>
 
-    <h1>Panel Admin – Carwash Pro</h1>
+    <div class="main-content">
+      <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
 
-    <div id="status"></div>
+      <h1>Panel Admin – Carwash Pro</h1>
+      <div class="stats-container">
+        <div class="stat-card">
+          <h3>Pendientes</h3>
+          <p id="stat-pending">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Confirmadas</h3>
+          <p id="stat-confirmed">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Completadas</h3>
+          <p id="stat-completed">0</p>
+        </div>
+      </div>
 
-    <table id="bookingsTable">
-      <thead>
-        <tr>
-          <th>Cliente</th>
-          <th>Teléfono</th>
-          <th>Servicio</th>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Estado</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+      <div id="status"></div>
 
-    <!-- ORDEN CORRECTO DE SCRIPTS -->
-    <!-- 1. Librería Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      <table id="bookingsTable">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Teléfono</th>
+            <th>Servicio</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
 
-    <!-- 2. auth.js (crea supabaseClient y protectAdmin) -->
-    <script src="auth.js"></script>
+      <!-- ORDEN CORRECTO DE SCRIPTS -->
+      <!-- 1. Librería Supabase -->
+      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- 3. admin.js (usa supabaseClient) -->
-    <script src="admin.js"></script>
+      <!-- 2. auth.js (crea supabaseClient y protectAdmin) -->
+      <script src="auth.js"></script>
 
-    <!-- 4. Ejecutar protección -->
-    <script>
-      protectAdmin();
-    </script>
+      <!-- 3. admin.js (usa supabaseClient) -->
+      <script src="admin.js"></script>
+
+      <!-- 4. Ejecutar protección -->
+      <script>
+        protectAdmin();
+      </script>
+    </div>
+    <!-- main-content -->
   </body>
 </html>

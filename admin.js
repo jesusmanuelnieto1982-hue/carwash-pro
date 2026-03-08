@@ -1,7 +1,10 @@
 // ===============================
 // CARGAR RESERVAS
 // ===============================
-async function loadBookings() {
+async function loadBookings()tbody.innerHTML = "";// Estadísticas
+let pending = 0;
+let confirmed = 0;
+let completed = 0; {
   const { data, error } = await supabaseClient
     .from("bookings")
     .select("*")
@@ -16,6 +19,10 @@ async function loadBookings() {
   tbody.innerHTML = "";
 
   data.forEach((booking) => {
+    if (booking.status === "pending") pending++;
+if (booking.status === "confirmed") confirmed++;
+if (booking.status === "completed") completed++;
+
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
@@ -54,6 +61,10 @@ async function updateStatus(id, status) {
   }
 
   loadBookings();
+document.getElementById("stat-pending").textContent = pending;
+document.getElementById("stat-confirmed").textContent = confirmed;
+document.getElementById("stat-completed").textContent = completed;
+
 }
 
 // ===============================
