@@ -1,48 +1,59 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Panel Admin – Carwash Pro</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+// ===============================
+// CARGAR RESERVAS
+// ===============================
+async function loadBookings() {
+  const { data, error } = await supabaseClient
+    .from("bookings")
+    .select("*")
+    .order("created_at", { ascending: false });
 
-  <body>
+  if (error) {
+    console.error("Error cargando reservas:", error);
+    return;
+  }
 
-    <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+  const tbody = document.querySelector("#bookingsTable tbody");
+  tbody.innerHTML = "";
 
-    <h1>Panel Admin – Carwash Pro</h1>
+  data.forEach((booking) => {
+    const tr = document.createElement("tr");
 
-    <div id="status"></div>
+    tr.innerHTML = `
+      <td>${booking.name}</td>
+      <td>${booking.phone}</td>
+      <td>${booking.service}</td>
+      <td>${booking.date}</td>
+      <td>${booking.time}</td>
+      <td>${booking.status}</td>
+      <td>
+        <button onclick="updateStatus('${booking.id}', 'confirmado')">Confirmar</button>
+        <button onclick="updateStatus('${booking.id}', 'completado')">Completar</button>
+      </td>
+    `;
 
-    <table id="bookingsTable">
-      <thead>
-        <tr>
-          <th>Cliente</th>
-          <th>Teléfono</th>
-          <th>Servicio</th>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Estado</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    tbody.appendChild(tr);
+  });
+}
 
-    <!-- ORDEN CORRECTO DE SCRIPTS -->
-    <!-- 1. Librería Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+// ===============================
+// ACTUALIZAR ESTADO
+// ===============================
+async function updateStatus(id, status) {
+  const { error } = await supabaseClient
+    .from("bookings")
+    .update({ status })
+    .eq("id", id);
 
-    <!-- 2. auth.js (crea supabaseClient y protectAdmin) -->
-    <script src="auth.js"></script>
+  if (error) {
+    console.error("Error actualizando estado:", error);
+    return;
+  }
 
-    <!-- 3. admin.js (usa supabaseClient) -->
-    <script src="admin.js"></script>
+  loadBookings();
+}
 
-    <!-- 4. Ejecutar protección -->
-    <script>
-      protectAdmin();
-    </script>
-
-  </body>
-</html>
+// ===============================
+// INICIAR PANEL
+// ===============================
+protectAdmin();
+loadBookings();
