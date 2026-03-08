@@ -483,3 +483,64 @@ body {
   font-weight: 700;
   color: #00a8ff;
 }
+/* ============================
+   RESPONSIVE PARA TELÉFONOS
+   ============================ */
+@media (max-width: 768px) {
+  /* Sidebar se convierte en barra superior */
+  .sidebar {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-right: none;
+    border-bottom: 1px solid #1f1f1f;
+    z-index: 1000;
+  }
+
+  .sidebar h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  /* Ocultamos el menú lateral */
+  .sidebar ul {
+    display: none;
+  }
+
+  /* Contenido principal baja debajo del menú */
+  .main-content {
+    margin-left: 0;
+    margin-top: 80px;
+    padding: 20px;
+    width: 100%;
+  }
+
+  /* Estadísticas en columna */
+  .stats-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Tabla scrollable */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  td,
+  th {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  /* Botones más compactos */
+  button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}

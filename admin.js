@@ -1,10 +1,7 @@
 // ===============================
 // CARGAR RESERVAS
 // ===============================
-async function loadBookings()tbody.innerHTML = "";// Estadísticas
-let pending = 0;
-let confirmed = 0;
-let completed = 0; {
+async function loadBookings() {
   const { data, error } = await supabaseClient
     .from("bookings")
     .select("*")
@@ -18,10 +15,16 @@ let completed = 0; {
   const tbody = document.querySelector("#bookingsTable tbody");
   tbody.innerHTML = "";
 
+  // Estadísticas
+  let pending = 0;
+  let confirmed = 0;
+  let completed = 0;
+
   data.forEach((booking) => {
+    // Contar estados
     if (booking.status === "pending") pending++;
-if (booking.status === "confirmed") confirmed++;
-if (booking.status === "completed") completed++;
+    if (booking.status === "confirmed") confirmed++;
+    if (booking.status === "completed") completed++;
 
     const tr = document.createElement("tr");
 
@@ -37,13 +40,18 @@ if (booking.status === "completed") completed++;
         </span>
       </td>
       <td>
-        <button onclick="updateStatus('${booking.id}', 'confirmed')" style="background:#3498db">Confirmar</button>
-        <button onclick="updateStatus('${booking.id}', 'completed')" style="background:#2ecc71">Completar</button>
+        <button class="btn-confirm" onclick="updateStatus('${booking.id}', 'confirmed')">Confirmar</button>
+        <button class="btn-complete" onclick="updateStatus('${booking.id}', 'completed')">Completar</button>
       </td>
     `;
 
     tbody.appendChild(tr);
   });
+
+  // Actualizar tarjetas de estadísticas
+  document.getElementById("stat-pending").textContent = pending;
+  document.getElementById("stat-confirmed").textContent = confirmed;
+  document.getElementById("stat-completed").textContent = completed;
 }
 
 // ===============================
@@ -61,10 +69,6 @@ async function updateStatus(id, status) {
   }
 
   loadBookings();
-document.getElementById("stat-pending").textContent = pending;
-document.getElementById("stat-confirmed").textContent = confirmed;
-document.getElementById("stat-completed").textContent = completed;
-
 }
 
 // ===============================
