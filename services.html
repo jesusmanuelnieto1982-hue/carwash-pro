@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Servicios – Carwash Pro</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <h1>Servicios</h1>
+
+    <div class="service-form">
+      <h3>Agregar Servicio</h3>
+      <input id="name" placeholder="Nombre del servicio" />
+      <input id="price" type="number" placeholder="Precio" />
+      <input id="duration" type="number" placeholder="Duración (min)" />
+      <textarea id="description" placeholder="Descripción"></textarea>
+      <button onclick="addService()">Guardar</button>
+    </div>
+
+    <h3>Lista de Servicios</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Duración</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="servicesTable"></tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="services.js"></script>
+  </body>
+</html>

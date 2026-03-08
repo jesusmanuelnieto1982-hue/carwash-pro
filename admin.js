@@ -2,9 +2,11 @@
 // CARGAR RESERVAS
 // ===============================
 async function loadBookings() {
+  // Traer solo reservas activas
   const { data, error } = await supabaseClient
     .from("bookings")
     .select("*")
+    .neq("status", "completed")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -15,17 +17,27 @@ async function loadBookings() {
   const tbody = document.querySelector("#bookingsTable tbody");
   tbody.innerHTML = "";
 
-  // Estadísticas
+  // ===============================
+  // ESTADÍSTICAS REALES
+  // ===============================
+  const { data: allBookings } = await supabaseClient
+    .from("bookings")
+    .select("status");
+
   let pending = 0;
   let confirmed = 0;
   let completed = 0;
 
-  data.forEach((booking) => {
-    // Contar estados
-    if (booking.status === "pending") pending++;
-    if (booking.status === "confirmed") confirmed++;
-    if (booking.status === "completed") completed++;
+  allBookings.forEach((b) => {
+    if (b.status === "pending") pending++;
+    if (b.status === "confirmed") confirmed++;
+    if (b.status === "completed") completed++;
+  });
 
+  // ===============================
+  // RENDERIZAR SOLO ACTIVAS
+  // ===============================
+  data.forEach((booking) => {
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
