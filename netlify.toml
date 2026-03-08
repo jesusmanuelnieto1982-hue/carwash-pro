@@ -1,0 +1,19 @@
+[[redirects]]
+  from = "/admin.js"
+  to = "/admin.js"
+  status = 200
+
+[[redirects]]
+  from = "/auth.js"
+  to = "/auth.js"
+  status = 200
+
+[[redirects]]
+  from = "/script.js"
+  to = "/script.js"
+  status = 200
+
+[[redirects]]
+  from = "/admin.html"
+  to = "/admin.html"
+  status = 200
