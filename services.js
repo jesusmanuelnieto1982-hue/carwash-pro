@@ -24,7 +24,7 @@ async function loadServices() {
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
-      <td>${service.name}</td>
+      <td>${service.name_es}</td>
       <td>$${service.price}</td>
       <td>${service.duration} min</td>
       <td>${service.active ? "Activo" : "Inactivo"}</td>
@@ -43,14 +43,20 @@ async function loadServices() {
 // AGREGAR SERVICIO
 // ===============================
 async function addService() {
-  const name = document.getElementById("name").value;
+  const name_es = document.getElementById("name").value;
   const price = document.getElementById("price").value;
   const duration = document.getElementById("duration").value;
-  const description = document.getElementById("description").value;
+  const description_es = document.getElementById("description").value;
 
-  const { error } = await supabaseClient
-    .from("services")
-    .insert([{ name, price, duration, description }]);
+  const { error } = await supabaseClient.from("services").insert([
+    {
+      name_es,
+      price,
+      duration,
+      description_es,
+      active: false,
+    },
+  ]);
 
   if (error) {
     console.error("Error agregando servicio:", error);
